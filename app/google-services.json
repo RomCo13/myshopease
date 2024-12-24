@@ -1,13 +1,32 @@
 {
   "project_info": {
-    "project_number": "626278229757",
-    "project_id": "shopease-3bae0",
-    "storage_bucket": "shopease-3bae0.appspot.com"
+    "project_number": "455364027304",
+    "project_id": "undivorcer",
+    "storage_bucket": "undivorcer.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:626278229757:android:1287b71335859acf364094",
+        "mobilesdk_app_id": "1:455364027304:android:c11bec94bf45427c2c339d",
+        "android_client_info": {
+          "package_name": "UnDivorcer.app.manage1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRQo9-B7ri2cI3ZI-tdQNdjKRxLqnpH0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455364027304:android:80ed8d32399757332c339d",
         "android_client_info": {
           "package_name": "com.example.shopease"
         }
@@ -15,7 +34,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAW0L5O2fERN2nDtcnMdo-U6k1CRLfBXkU"
+          "current_key": "AIzaSyCRQo9-B7ri2cI3ZI-tdQNdjKRxLqnpH0w"
         }
       ],
       "services": {
