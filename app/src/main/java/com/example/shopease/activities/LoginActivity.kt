@@ -30,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
         dbHelper = UsersDatabaseHelper(applicationContext)
 
         // Check for locally stored user credentials
-        checkForLocallyStoredUser()
+//        checkForLocallyStoredUser()
     }
 
     private fun checkForLocallyStoredUser() {

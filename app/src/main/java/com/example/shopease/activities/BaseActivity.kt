@@ -58,10 +58,6 @@ open class BaseActivity : AppCompatActivity(), InterfaceFragmentTitle {
                     true
                 }
 
-                R.id.action_saved_place -> {
-                    loadFragment(SavedPlaceFragment())
-                    true
-                }
 
                 else -> false
             }

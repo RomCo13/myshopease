@@ -38,47 +38,40 @@ class UsersDatabaseHelper(context: Context) : BaseDatabaseHelper() {
     ) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
-                if (true) {
-                    val user = User(
-                        uid = "asd",
-                        username = "asdasd",
-                        email = "asdasd",
-                        profileImage = "asdasda"
-                    )
-                    callback.onRegistrationResult(true, user)
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    if (user != null) {
+                        val base64ImageProfile = byteArrayToBase64(imageProfile)
+                        val newUser = User(user.uid, username, email, base64ImageProfile)
 
-//                    if (user != null) {
-//                        val base64ImageProfile = byteArrayToBase64(imageProfile)
-//                        val newUser = User(user.uid, username, email, base64ImageProfile)
-//
-//                        val userId = user.uid
-//                        val userRef = databaseReference.child("users").child(userId)
-//                        userRef.setValue(newUser)
-//                            .addOnCompleteListener { innerTask ->
-//                                if (innerTask.isSuccessful) {
-//                                    // Save user data locally after successful registration
-//                                    saveUserLocally(newUser)
-//                                    callback.onRegistrationResult(true, newUser)
-//                                } else {
-//                                    Log.e(
-//                                        "FirebaseHelper",
-//                                        "Error adding user to Realtime Database",
-//                                        innerTask.exception
-//                                    )
-//                                    callback.onRegistrationResult(false, null)
-//                                }
-//                            }
-//                    } else {
-//                        Log.e("FirebaseHelper", "Error getting current user after registration")
-//                        callback.onRegistrationResult(false, null)
-//                    }
-//                } else {
-//                    Log.e(
-//                        "FirebaseHelper",
-//                        "Error registering user with Firebase Authentication",
-//                        task.exception
-//                    )
-//                    callback.onRegistrationResult(false, null)
+                        val userId = user.uid
+                        val userRef = databaseReference.child("users").child(userId)
+                        userRef.setValue(newUser)
+                            .addOnCompleteListener { innerTask ->
+                                if (innerTask.isSuccessful) {
+                                    // Save user data locally after successful registration
+                                    saveUserLocally(newUser)
+                                    callback.onRegistrationResult(true, newUser)
+                                } else {
+                                    Log.e(
+                                        "FirebaseHelper",
+                                        "Error adding user to Realtime Database",
+                                        innerTask.exception
+                                    )
+                                    callback.onRegistrationResult(false, null)
+                                }
+                            }
+                    } else {
+                        Log.e("FirebaseHelper", "Error getting current user after registration")
+                        callback.onRegistrationResult(false, null)
+                    }
+                } else {
+                    Log.e(
+                        "FirebaseHelper",
+                        "Error registering user with Firebase Authentication",
+                        task.exception
+                    )
+                    callback.onRegistrationResult(false, null)
                 }
             }
     }
@@ -86,17 +79,9 @@ class UsersDatabaseHelper(context: Context) : BaseDatabaseHelper() {
     fun login(username: String, password: String, callback: LoginCallback) {
         auth.signInWithEmailAndPassword(username, password)
             .addOnCompleteListener { task ->
-                if (true) {
+                if (task.isSuccessful) {
                     val user = auth.currentUser
-                    if (true) {
-                        val user = User(
-                            uid = "asd",
-                            username = "asdasd",
-                            email = "asdasd",
-                            profileImage = "asdasda"
-                        )
-                        saveUserLocally(user)
-
+                    if (user != null) {
                         val userId = user.uid
                         val userRef = databaseReference.child("users").child(userId)
                         userRef.addListenerForSingleValueEvent(object : ValueEventListener {

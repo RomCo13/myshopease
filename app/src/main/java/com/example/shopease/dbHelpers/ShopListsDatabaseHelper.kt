@@ -186,14 +186,11 @@ class ShopListsDatabaseHelper : BaseDatabaseHelper() {
 
         newShopListRef.setValue(newList)
             .addOnSuccessListener {
+                Log.d("FirebaseDB", "Data written successfully: ${newList}")
                 listener.onShopListInserted(newList)
             }
             .addOnFailureListener { exception ->
-                Log.e(
-                    "ShopListFirebaseHelper",
-                    "Error getting all lists by username",
-                    exception.cause
-                )
+                Log.e("FirebaseDB", "Error writing data", exception)
             }
     }
 
