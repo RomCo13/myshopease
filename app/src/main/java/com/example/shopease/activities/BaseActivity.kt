@@ -12,7 +12,6 @@ import com.example.shopease.dataClasses.User
 import com.example.shopease.dbHelpers.UsersDatabaseHelper
 import com.example.shopease.fragments.HomeFragment
 import com.example.shopease.fragments.ProfileFragment
-import com.example.shopease.fragments.SavedPlaceFragment
 import com.example.shopease.friends.FriendsFragment
 import com.example.shopease.wishLists.WishlistsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
